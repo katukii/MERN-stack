@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Consumer ReactApp!</title>
+
+	<!-- Here we include bootstrap. This will be made available to all of the generated HTML/JS that React generates-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>  
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.0/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+<!--Navbar -->
+<div class="navbar navbar-default navbar-static-top">
+   <div class="container">
+     <a class="navbar-logo" href="homepage.html"><img src="./public/lib_mon/images/logo.png" alt="resolve logo" width="200" height="100"  class="navbar-brand"></a>
+     <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse"></button>
+
+     <span class="icon-bar"></span>
+     <ul class="nav navbar-nav">
+      <li><a href="../homepage.html">Home</a></li>
+      <li><a href="../complaint.html">Consumer</a></li>
+      <li><a href="../company.html">Company</a></li>
+      <li class="active"><a href="index.html">Chat</a></li>
+        <!--=============================================================-->
+      <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a href="#">Bank Account or Service</a></li>
+         <li><a href="#">Credit Card</a></li>
+         <li><a href="#">Credit Reporting</a></li>
+         <li><a href="#">Debt Collection</a></li>
+         <li><a href="#">Money Transfer</a></li>
+         <li><a href="#">Mortgage</a></li>
+         <li><a href="#">Other Financial Service</a></li>
+         <li><a href="#">Payday Loan</a></li>
+         <li><a href="#">Prepaid Card</a></li>
+         <li><a href="#">Student Loans</a></li>
+         <li><a href="#">Vehicle / Consumer Loan</a></li>
+         <li><a href="#">One more separated link</a></li>
+       </ul>
+      </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Social Media<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a href="#">Twitter</a></li>
+         <li><a href="#">Facebook</a></li>
+         <li><a href="#">Snapchat</a></li>
+         <li role="separator" class="divider"></li>
+         <li><a href="#">Instagram</a></li>
+        </ul>
+    </li>
+     <!--=============================================================-->
+
+     <div class="navbar-nav navbar-right">
+       <li><a href="sign-up.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li><br>
+       <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+     </div>
+     </ul>
+  </div>
+ </div>
+ <!-- Navbar end-->
+	<div class="container">
+	  <div class="row">
+	  	<div class="Jumbotron text-center">
+	  	  <h1>Let us chat about your experience</h1>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <div class="text-center">
+	    	<iframe width="640" height="360" src="https://www.youtube.com/embed/wCfUKkMGeKE"></iframe>
+	    </div>	
+	  </div>
+	</div>	  
+	<!-- This is where React will deploy the contents it generates -->
+	<div id="app"></div>
+
+	<!-- All of our JS code will be transpiled into this bundle.js file -->
+	<!--script src="http://localhost/socket.io/socket.io.js"></script-->
+	<script src="bundle.js"></script>
+</body>
+
+</html>

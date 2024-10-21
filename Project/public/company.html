@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Log Consumer Complaint</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+  <!-- Include Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="navbar navbar-default navbar-static-top">
+   <div class="container">
+     <a class="navbar-logo" href="homepage.html"><img src="./lib_mon/images/logo.png" alt="resolve logo" width="200" height="100"  class="navbar-brand"></a>
+     <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse"></button>
+
+     <span class="icon-bar"></span>
+     <ul class="nav navbar-nav">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="complaint.html">Consumer</a></li>
+      <li class="active"><a href="company.html">Company</a></li>
+      <li><a href="./reactApp/index.html">Chat</a></li>
+        <!--=============================================================-->
+      <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a href="#">Bank Account or Service</a></li>
+         <li><a href="#">Credit Card</a></li>
+         <li><a href="#">Credit Reporting</a></li>
+         <li><a href="#">Debt Collection</a></li>
+         <li><a href="#">Money Transfer</a></li>
+         <li><a href="#">Mortgage</a></li>
+         <li><a href="#">Other Financial Service</a></li>
+         <li><a href="#">Payday Loan</a></li>
+         <li><a href="#">Prepaid Card</a></li>
+         <li><a href="#">Student Loans</a></li>
+         <li><a href="#">Vehicle / Consumer Loan</a></li>
+         <li><a href="#">One more separated link</a></li>
+       </ul>
+      </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Social Media<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a href="#">Twitter</a></li>
+         <li><a href="#">Facebook</a></li>
+         <li><a href="#">Snapchat</a></li>
+         <li role="separator" class="divider"></li>
+         <li><a href="#">Instagram</a></li>
+        </ul>
+    </li>
+       <!--=============================================================-->
+
+     <li><a href="#">                              |</a></li>
+     <div class="nav navbar-nav navbar-right">
+       <li><a href="sign-up.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li><br>
+       <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+     </div>
+    </ul>
+  </div>
+ </div>
+
+  <div class="container">
+  <div id="table-location">
+
+    </div>
+    <br/>
+    <!-- Location where the chart will be added -->
+    <div id="chart-location">
+    </div>
+
+    <h2>Tabular Data</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="category-row">
+          <td>Month</td>
+          <!-- \{{#each categories}} <td>\{{label}}</td> \{{/each }} -->
+        </tr>
+      </thead>
+      <tbody class="dataset-body">
+        <!-- \{{#each dataset}}
+        <tr>
+          <td>\{{seriesname}}</td>
+          \{{#each data}} <td>\{{value}}</td> \{{/each}}
+        </tr>
+        \{{/each}} -->
+      </tbody>
+    </table>
+
+    <h1 class="jumbotron text-center">Company Workspace</h1>
+   <form action="/submit" method="post">
+    <div class="row">
+     <div class="col-sm-7">
+       <div class="panel panel-default">
+        <div class="panel-heading">Logged Complaint</div>
+         <div class="panel-body">
+           <div class="row">
+             <div class="form-group">
+              <div class="col-xs-4">
+               <label for="Month">Month</label>
+               <input class="form-control" id="month-input" type="month" name="month" placeholder="Month">
+             </div>
+             <div class="col-xs-5">
+                <label for="Logged Complaint">Logged Complaint</label>
+               <input type="number" class="form-control" id="logged_complaint" placeholder="Enter Number">
+             </div>
+            </div> 
+           </div>
+           <hr>
+           <div class="form-group">
+             <label for="Resolved Complaint">Resolved Complaint</label>
+               <input type="number" class="form-control" id="logged_complaint" placeholder="Enter Number">
+           </div>
+            <input class="center-block" type="submit">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+  <script src="js/libs/fusioncharts_demo.js" charset="utf-8"></script>
+  <script src="js/libs/fusioncharts.js"></script>
+  <script src="js/libs/fusioncharts.charts.js"></script>
+  <script src="js/libs/fusioncharts.theme.zune.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.0/handlebars.js"></script>
+  <script type="text/javascript">
+    $.get('loggedComplaints').then(function(data) {
+        console.log(data)
+
+        var categories = data.categories;
+        var datasets = data.dataset;
+
+        var categoriesDiv = '<td></td>';
+
+        categories.forEach(function(category) {
+          categoriesDiv += '<td>' + category.label + '</td>'
+        })
+
+        var dataDiv = '';
+
+        datasets.forEach(function(dataset) {
+          dataDiv = dataDiv + '<tr><td>' + dataset.seriesname + '</td>';
+          dataset.data.forEach(function(dataItem) {
+            dataDiv = dataDiv + '<td>' + dataItem.value + '</td>'
+          });
+
+          dataDiv = dataDiv + '</tr>'
+        });
+
+        console.log(dataDiv)
+
+        $('.category-row').html(categoriesDiv);
+        $('.dataset-body').html(dataDiv);
+    })
+
+
+  </script>
+</body>
+</html>
